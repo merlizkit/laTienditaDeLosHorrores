@@ -3,13 +3,13 @@ import CartWidget from "./CartWidget";
 
 const NavBar = () => {
     return (
-        <nav>
-            <ul> La tiendita de los horrores
-                <a href="">Home</a>
-                <a href="">Productos</a>
-                <a href="">¿Quienes somos?</a>
-                <a href="">Contacto</a>
-                <a href="">Contacto</a>
+        <nav className="nav">
+            <ul className="nav-item"> La tiendita de los horrores
+                <a className='nav-link' href="">Home</a>
+                <a className='nav-link' href="">Productos</a>
+                <a className='nav-link' href="">¿Quienes somos?</a>
+                <a className='nav-link' href="">Contacto</a>
+                <a className='nav-link' href="">Contacto</a>
             </ul>
             <CartWidget />
         </nav>
