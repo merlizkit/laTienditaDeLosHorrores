@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Montserrat&family=Poppins:ital,wght@0,100;1,200&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+    background-color: black;
+    color: whitesmoke;
+}
+
+.icon {
+    height: 2em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+  
+.nav {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.nav-item {
+    background-color: white;
+    color: black;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: end;
+    gap: 1rem;
+}
+
+.nav-link {
+    background-color: white;
+    color: black;
+}
