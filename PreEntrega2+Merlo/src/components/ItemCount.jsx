@@ -4,29 +4,23 @@ export const ItemCount = ({stock, initial}) => {
 
     const [qty, setQty] = useState(Number(initial));
 
+    const onSubs = () => {
+        if(qty > 0) {
+            setQty(qty - 1);
+        }
+    }
+
+    const onAdd = () => {
+        if(qty < stock) {
+            setQty(qty +1);
+        }
+    }
+
     return (
         <div>
-            <button onClick={() => {
-                if(qty > 0) {
-                    setQty(qty - 1);
-                    console.log('then + >0 ', 'initial ', initial, 'stock ', stock, 'qty ', qty);
-                } else {
-                    setQty(qty - qty);
-                    console.log('else + >0 ', 'initial ', initial, 'stock ', stock, 'qty ', qty);
-                }
-            }}>-</button>
-
-            { qty }
-            
-            <button onClick={() => {
-                if(qty < stock) {
-                    setQty(qty +1);
-                    console.log('then + <stk ', 'initial ', initial, 'stock ', stock, 'qty ', qty);
-                } else {
-                    setQty(qty);
-                    console.log('else + <stk ', 'initial ', initial, 'stock ', stock, 'qty ', qty);
-                }
-                }}>+</button>
+            <button onClick={onSubs}>-</button>
+            <span>{ qty }</span>
+            <button onClick={onAdd}>+</button>
         </div>
     )
 }
