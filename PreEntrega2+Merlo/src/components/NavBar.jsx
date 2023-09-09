@@ -1,15 +1,16 @@
 import CartWidget from "./CartWidget";
-
+import { NavLink, useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 const NavBar = () => {
+
     return (
         <nav className="nav">
-            <ul className="nav-item"> La tiendita de los horrores
-                <a className='nav-link' href="">Home</a>
-                <a className='nav-link' href="">Productos</a>
-                <a className='nav-link' href="">¿Quienes somos?</a>
-                <a className='nav-link' href="">Contacto</a>
-                <a className='nav-link' href="">Contacto</a>
+            <NavLink to='/'><img src="/lsoh_logo.png" alt="little shop of horrors logo" className="nav-logo" /></NavLink>
+            <ul className="nav-item">
+                <NavLink className='nav-link' to={`/item/1`}>Productos</NavLink>
+                <NavLink className='nav-link' to=''>¿Quienes somos?</NavLink>
+                <NavLink className='nav-link' to=''>Contacto</NavLink>
             </ul>
             <CartWidget />
         </nav>

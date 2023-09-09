@@ -16,9 +16,8 @@
   }
   
 .nav {
-
     display: flex;
-    justify-content: space-between;
+    justify-content: first baseline;
     align-items: center;
     background-color: white;
 }
@@ -37,4 +36,26 @@
 .nav-link {
     background-color: white;
     color: black;
+}
+
+.nav-logo {
+    width: 100px;
+    background-color: white;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.card {
+    display: flex;
+}
+.card-item {
+    background-color: white;
+}
+.card-img {
+    width: 150px;
 }
