@@ -2,24 +2,28 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ItemDetail } from './ItemDetail';
 
-export const ItemDetailContainer = () => {
-    const { id } = useParams();
+const mockAPI = () => {
+    return new Promise ((resolve, reject) => {
+        setTimeout(() => 
+            resolve(fetch('/products.json'))
+        , 2000);
+    })
+}
 
+export const ItemDetailContainer = () => {
+    const { id: itemId } = useParams();
+    
     const [data, setData] = useState([]);
     useEffect(() => {
-        setTimeout(() => 
-            fetch('/products.json')
-                .then(res => res.json())
-                .then(data => setData(data))
-        , 2000);
+        mockAPI()
+        .then(res => res.json())
+        .then((data) => setData(data));
     }, []);
 
-    const getItem = data.find(item => (item.id == id))
-    console.log(getItem);
-
+    const getItem = data.find(item => (item.id == itemId))
 
     return (
-        <div>
+        <div className='detail-container'>
             <ItemDetail data={getItem} />
         </div>
     )

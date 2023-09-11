@@ -1,7 +1,16 @@
+import { useParams } from "react-router-dom";
 import { ItemList } from "./ItemList";
 import { useState, useEffect } from "react";
 
-const ItemListContainer = ({greeting}) => {
+const mockAPI = () => {
+    return new Promise ((resolve, reject) => {
+        setTimeout(() => 
+            resolve(fetch('/products.json'))
+        , 2000);
+    })
+}
+
+const ItemListContainer = () => {
 
     const [data, setData] = useState([]);
     
@@ -15,17 +24,17 @@ const ItemListContainer = ({greeting}) => {
 
     /* ----------------------- productos de products.json ----------------------- */
     useEffect(() => {
-        setTimeout(() => 
-            fetch('/products.json')
-                .then(res => res.json())
-                .then(data => setData(data))
-        , 2000);
+        mockAPI()
+        .then(res => res.json())
+        .then((data) => setData(data));
     }, []);
 	
+    const {id: catId} = useParams();
+    const items = catId ? data.filter(item => item.category == catId) : data;
+    
     return (
-        <div className="products">
-            <h1>{greeting}</h1>
-            <ItemList data={data} />
+        <div className="item-container">
+            <ItemList data={items} />
         </div>
     );
 

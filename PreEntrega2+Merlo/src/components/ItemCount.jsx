@@ -17,7 +17,7 @@ export const ItemCount = ({stock, initial}) => {
     }
 
     return (
-        <div>
+        <div className="detail-count">
             <button onClick={onSubs}>-</button>
             <span>{ qty }</span>
             <button onClick={onAdd}>+</button>

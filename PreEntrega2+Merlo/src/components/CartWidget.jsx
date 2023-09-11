@@ -1,8 +1,8 @@
 const CartWidget = () => {
     return (
-        <div className="nav-item">
+        <div className="nav-cart">
             <img src="/cart_icon.jpg" alt="cart-icon" className="icon" />
-            0
+            <span>0</span>
         </div>
     );
 }
