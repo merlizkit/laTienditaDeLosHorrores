@@ -1,30 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ItemDetail } from './ItemDetail';
-
-const mockAPI = () => {
-    return new Promise ((resolve, reject) => {
-        setTimeout(() => 
-            resolve(fetch('/products.json'))
-        , 2000);
-    })
-}
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 export const ItemDetailContainer = () => {
     const { id: itemId } = useParams();
     
     const [data, setData] = useState([]);
-    useEffect(() => {
-        mockAPI()
-        .then(res => res.json())
-        .then((data) => setData(data));
-    }, []);
 
-    const getItem = data.find(item => (item.id == itemId))
+    useEffect(() => {
+        const db = getFirestore();
+        const item = doc(db, "products", itemId);
+        getDoc(item).then((snapshot) => {
+            setData({ id: snapshot.id, ...snapshot.data() })
+        })
+    }, []);
 
     return (
         <div className='detail-container'>
-            <ItemDetail data={getItem} />
+            <ItemDetail data={data} />
         </div>
     )
 }

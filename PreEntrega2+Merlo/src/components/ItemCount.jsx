@@ -21,6 +21,7 @@ export const ItemCount = ({stock, initial}) => {
             <button onClick={onSubs}>-</button>
             <span>{ qty }</span>
             <button onClick={onAdd}>+</button>
+            <div><button>Agregar al carrito</button></div>
         </div>
     )
 }

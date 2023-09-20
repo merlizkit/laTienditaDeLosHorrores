@@ -1,6 +1,10 @@
 import { useParams } from "react-router-dom";
 import { ItemList } from "./ItemList";
 import { useState, useEffect } from "react";
+import { getFirestore, collection, getDocs, query, where, limit } from "firebase/firestore";
+    // para llamar un documento: doc y getDoc
+    // para llamara a la collection completa: collection y getDocs
+    // para queries: query, where, limit y la que sea.
 
 const mockAPI = () => {
     return new Promise ((resolve, reject) => {
@@ -14,27 +18,29 @@ const ItemListContainer = () => {
 
     const [data, setData] = useState([]);
     
-    /* ----------------------- productos de fake store api ---------------------- */
-    // useEffect(() => {
-    //   fetch('https://fakestoreapi.com/products')
-    //       .then(res => res.json())
-    //       .then(data => setData(data))
-    //       .catch(console.log('Error al buscar el archivo'))
-    //   }, []);
-
-    /* ----------------------- productos de products.json ----------------------- */
-    useEffect(() => {
-        mockAPI()
-        .then(res => res.json())
-        .then((data) => setData(data));
-    }, []);
-	
     const {id: catId} = useParams();
-    const items = catId ? data.filter(item => item.category == catId) : data;
+    useEffect(() => {
+        const db = getFirestore();
+        let items;
+        if(catId) {
+            items = query(collection(db, "products"), where("category", "==", catId), limit(5));
+        } else {
+            items = collection(db, "products");
+        }
+        
+        getDocs(items).then((snapshot) => {
+            if (snapshot.size != 0) {
+                setData(snapshot.docs.map((doc) => ({id: doc.id, ...doc.data() }) ) );
+            } else {
+                setData([]);
+            }
+        })
+        
+    },[catId]);
     
     return (
         <div className="item-container">
-            <ItemList data={items} />
+            <ItemList data={data} />
         </div>
     );
 
