@@ -9,10 +9,10 @@ export const Item = ({data}) => {
             {
                 data ? (
                     <div className="item">
-                        <NavLink key={data.id} to={`/item/${data.id}`} >
+                        <NavLink className="item-card" key={data.id} to={`/item/${data.id}`} >
                             <img className="item-card-img" src={data.image} alt="product-image" />
-                            <h5>{data.title}</h5>
-                            <p>USD {data.price}</p>
+                            <h5 className="item-card-title">{data.title}</h5>
+                            <p className="item-card-price">USD {data.price}</p>
                         </NavLink>
                     </div>
                 ) : null

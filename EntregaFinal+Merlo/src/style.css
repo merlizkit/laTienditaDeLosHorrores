@@ -5,8 +5,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat';
-    background-color: white;
     color: black;
+    background-color: rgb(202, 200, 200);
 }
 
 a {
@@ -22,7 +22,6 @@ a.active {
     transition: filter 300ms;
     background-color: grey;
 }
-
 
 .small-button {
     background-color: grey;
@@ -40,7 +39,6 @@ a.active {
     color: white;
     font-size: 1rem;
     padding: 1rem;
-    margin-top: 1rem;
 }
 
 .none {
@@ -95,11 +93,13 @@ a.active {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 5rem;
+    padding-top: 5rem;
+    background-color: rgb(202, 200, 200);
 }
 .item-list {
     display: grid;
     grid-template-columns: repeat( 4 , 1fr);
+    max-width: 80%;
 }
 .item-list h2 {
     grid-column: 2/4;
@@ -111,16 +111,29 @@ a.active {
     justify-content: center;
     text-align: center;
     margin: 1rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 25px;
+}
+.item-card {
+    background-color: white;
 }
 .item-card-img {
     width: 100px;
+}
+.item-card-title {
+    background-color: white;
+}
+.item-card-price {
+    background-color: white;
 }
 
 .detail-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 5rem;
+    padding-top: 5rem;
+    background-color: rgb(202, 200, 200);
 }
 .detail {
     display: flex;
@@ -128,32 +141,55 @@ a.active {
     flex-direction: column;
     justify-items: center;
     align-items: center;
-    margin: 2rem;
+    margin: 1rem;
+    padding: 1rem;
     max-width: 800px;
+    background-color: white;
+    border-radius: 25px;
 }
 .detail-card {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat( 2 , 1fr);
     align-items: center;
     text-decoration: none;
     text-align: center;
+    background-color: white;
 }
 .detail-card p {
-    margin-top: 1rem;
+    background-color: white;
+}
+.detail-card h3 {
+    background-color: white;
+}
+.detail-card-desc {
+    grid-row: 2;
+}
+.detail-card-price {
+    grid-row: 6;
+    background-color: white;
+}
+.detail-card-stock {
+    grid-row: 8;
 }
 .detail-card-img {
-    width: 150px;
+    grid-row: 1/10;
+    width: 250px;
+    justify-self: center;
 }
 .detail-count {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin-top: 1rem;
+    padding-top: 1rem;
+    background-color: white;
 }
 .detail-count h4 {
-    margin: 1rem;
+    padding: 1rem;
+    background-color: white;
+}
+.detail-button large-button {
+    background-color: white;
 }
 
 .cart {
@@ -169,10 +205,20 @@ a.active {
 .cart-item {
     display: grid;
     grid-template-columns: repeat( 7 , 1fr);
-    margin-bottom: 2rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-radius: 25px;
+    background-color: white;
 }
 .cart-item-title {
     grid-column: 1/4;
+    background-color: white;
+}
+.cart-item-info {
+    display: flex;
+    justify-content: center;
+    background-color: white;
 }
 .cart-item .medium-button {
     grid-column: 7;
@@ -180,15 +226,24 @@ a.active {
 .cart-empty {
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin-top: 5rem;
     margin-inline: 2rem;
 }
-.cart-foot {
-    display: grid;
-    grid-template-columns: repeat( 7 , 1fr);
+.cart-empty p {
+    margin-bottom: 1rem;
 }
-.cart-foot p {
-    grid-column: 6/8;
+.cart-foot {
+    display: flex;
+    justify-content: end;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 25px;
+    background-color: white;
+}
+.cart-foot h2 {
+    background-color: white;
+    margin-right: 7rem;
 }
 
 .checkout-container {
@@ -197,7 +252,24 @@ a.active {
     align-items: center;
     margin-top: 5rem;
 }
+.checkout-container h1 {
+    margin-bottom: 1rem;
+}
+.checkout-container h3 {
+    margin-bottom: 1rem;
+}
 .checkout-form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    min-width: 40%;
+    max-width: 50%;
+    margin-block: 1rem;
+}
+.checkout-form input {
+    padding: 0.3rem;
+    background-color: white;
+}
+.checkout-form label {
+    padding: 0.3rem;
 }

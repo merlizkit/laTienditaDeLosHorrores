@@ -36,7 +36,7 @@ export const Checkout = () => {
         return (
             <div className="checkout-container">
                 <h1>{`¡Gracias por tu compra!`}</h1>
-                <h2>{`Tu id de pedido es ${orderId}`}</h2>
+                <h3>{`Tu id de pedido es ${orderId}`}</h3>
                 <Link to="/"><button className="large-button">Ir al Catalogo</button></Link>
             </div>
         )
@@ -46,14 +46,14 @@ export const Checkout = () => {
         <div className="checkout-container">
             <h2>Ingresá tus datos para terminar la compra</h2>
             <form className="checkout-form">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Nombre</label>
                 <input id="name" type="text" value={name} onChange={event => {setName(event.target.value)}} />
                 <label htmlFor="email">Email</label>
                 <input id="email" type="mail" value={email} onChange={event => {setEmail(event.target.value)}} />
-                <label htmlFor="phone">Phone</label>
+                <label htmlFor="phone">Telefono</label>
                 <input id="phone" type="number" value={phone} onChange={event => {setPhone(event.target.value)}} />
-                <Link to='/checkout'><button className="large-button" onClick={createOrder} >Finalizar compra</button></Link>
             </form>
+            <Link to='/checkout'><button className="large-button" onClick={createOrder} >Finalizar compra</button></Link>
         </div>
     )
 

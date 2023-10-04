@@ -27,10 +27,12 @@ export const ItemDetail = ({data}) => {
                 data ? (
                         <div className="detail-card">
                             <img className="detail-card-img" src={data.image} alt="product-image" />
-                            <h3>{data.title}</h3>
-                            <p>{data.description}</p>
-                            <p>USD {data.price}</p>
-                            <p>Stock: {data.stock}</p>
+                            <div className="detail-card-desc">
+                                <h3>{data.title}</h3>
+                                <p>{data.description}</p>
+                            </div>
+                            <h3 className="detail-card-price">USD {data.price}</h3>
+                            <p className="detail-card-stock">Stock: {data.stock}</p>
                         </div>
                 ) : null
             }

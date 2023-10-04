@@ -22,7 +22,7 @@ export const CartItem = ({data}) => {
                         <h3 className="cart-item-title">{data.title}</h3>
                         <p className="cart-item-info">USD {data.price}</p>
                         <p className="cart-item-info">Cant: {data.qty}</p>
-                        <p className="cart-item-info">Subtotal: {Number(data.qty*data.price).toFixed(2)}</p>
+                        <p className="cart-item-info">{Number(data.qty*data.price).toFixed(2)} USD</p>
                         <button className="medium-button"  onClick={handleClick}>Eliminar</button>
                     </div>
                 ) : null

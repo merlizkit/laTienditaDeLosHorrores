@@ -13,7 +13,7 @@ export const Cart = () => {
                             {cart.map(item => 
                                 <CartItem key={item.id} data={item} />)}
                             <div className="cart-foot">
-                                <p>Total: {Number(totAmount).toFixed(2)} USD</p>
+                                <h2>Total: {Number(totAmount).toFixed(2)} USD</h2>
                             </div>
                             <Link to='/checkout'><button className="large-button">Finalizar Compra</button></Link>
                         </div>
