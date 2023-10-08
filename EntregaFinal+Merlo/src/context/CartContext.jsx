@@ -10,15 +10,19 @@ export const CartContextProvider = ({children}) => {
 
     const addItem = (item, qty) =>  {
         if(isInCart(item.id)) {
-            console.error("Producto ya agregado al carro");
+            /* ----------------------------- modifica cantidad del producto ---------------------------- */
+            const index = cart.findIndex( prod => prod.id === item.id)
+            const updCart = [...cart];
+            updCart[index].qty = updCart[index].qty + qty
+            setCart(updCart);
         } else {
             /* ----------------------------- agrega al carro ---------------------------- */
             setCart(prev => [...prev, {...item, qty}]);
-
-            /* -------------------------- actualiza cantidades -------------------------- */
-            setTotCartQty(totCartQty += qty);
-            setTotAmount(totAmount += qty*item.price);
         }
+
+        /* -------------------------- actualiza cantidades totales -------------------------- */
+        setTotCartQty(totCartQty += qty);
+        setTotAmount(totAmount += qty*item.price);
     }
     const clearCart = () => {
         /* ----------------------------- vacia el carro ----------------------------- */
