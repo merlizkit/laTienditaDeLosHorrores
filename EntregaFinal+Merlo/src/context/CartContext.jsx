@@ -5,12 +5,12 @@ export const CartContext = createContext([]);
 export const CartContextProvider = ({children}) => {
     const [cart, setCart] = useState([]);
 
-    let [totCartQty, setTotCartQty] = useState(0);
-    let [totAmount, setTotAmount] = useState(0);
+    let [TotCartQty3, setTotCartQty3] = useState(0);
+    let [TotAmount3, setTotAmount3] = useState(0);
 
     const addItem = (item, qty) =>  {
         if(isInCart(item.id)) {
-            /* ----------------------------- modifica cantidad del producto ---------------------------- */
+            /* --------------------- modifica cantidad del producto --------------------- */
             const index = cart.findIndex( prod => prod.id === item.id)
             const updCart = [...cart];
             updCart[index].qty = updCart[index].qty + qty
@@ -19,32 +19,22 @@ export const CartContextProvider = ({children}) => {
             /* ----------------------------- agrega al carro ---------------------------- */
             setCart(prev => [...prev, {...item, qty}]);
         }
-
-        /* -------------------------- actualiza cantidades totales -------------------------- */
-        setTotCartQty(totCartQty += qty);
-        setTotAmount(totAmount += qty*item.price);
     }
     const clearCart = () => {
         /* ----------------------------- vacia el carro ----------------------------- */
         setCart([]);
-
-        /* --------------------------- reinicia cantidades -------------------------- */
-        setTotCartQty(totCartQty = 0);
-        setTotAmount(totAmount = 0);
     }
     const removeItem = (item) => {
         /* ----------------------- borra el producto del carro ---------------------- */
         const itemId = item.id;
         setCart(cart.filter(prod => prod.id != itemId));
-
-        /* ------------------------ actualiza las cantidades ------------------------ */
-        setTotCartQty(totCartQty -= item.qty);
-        setTotAmount(totAmount -= item.qty*item.price);
     }
     const isInCart = (id) => {
         /* ------------------- verifica si el id está en el carro ------------------- */
         return cart.some(prod => prod.id == id);
     }
+    const totCartQty = cart.reduce((total, product) => total + product.qty, 0);
+    const totAmount = cart.reduce((total, product) => total + (product.qty * product.price), 0);
     
     return (
         <CartContext.Provider value={{cart, addItem, clearCart, removeItem, totCartQty, totAmount}} >
