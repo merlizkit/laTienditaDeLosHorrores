@@ -6,6 +6,7 @@ import { getFirestore, collection, getDocs, query, where, limit } from "firebase
 const ItemListContainer = () => {
 
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
     
     const {id: catId} = useParams();
     useEffect(() => {
@@ -23,13 +24,14 @@ const ItemListContainer = () => {
             } else {
                 setData([]);
             }
+            setLoading(false);
         })
         
     },[catId]);
     
     return (
         <div className="item-container">
-            <ItemList data={data} />
+            <ItemList data={data} loading={loading} />
         </div>
     );
 
