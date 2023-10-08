@@ -17,7 +17,7 @@ export const CartItem = ({data}) => {
     return (
         <>
             {
-                data ? (
+                data && (
                     <div className="cart-item">
                         <h3 className="cart-item-title">{data.title}</h3>
                         <p className="cart-item-info">USD {data.price}</p>
@@ -25,7 +25,7 @@ export const CartItem = ({data}) => {
                         <p className="cart-item-info">{Number(data.qty*data.price).toFixed(2)} USD</p>
                         <button className="medium-button"  onClick={handleClick}>Eliminar</button>
                     </div>
-                ) : null
+                )
             }
         </>
     )
