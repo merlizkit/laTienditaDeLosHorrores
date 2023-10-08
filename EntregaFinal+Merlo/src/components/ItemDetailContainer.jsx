@@ -14,7 +14,7 @@ export const ItemDetailContainer = () => {
         getDoc(item).then((snapshot) => {
             setData({ id: snapshot.id, ...snapshot.data() })
         })
-    }, []);
+    }, [itemId]);
 
     return (
         <div className='detail-container'>
